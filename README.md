@@ -22,9 +22,4 @@ This repository contains the final code for a **responsive portfolio website** t
 
 ---
 
-## 💻 Getting Started
 
-### 1️⃣ Installation
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/your-username/your-repo-name.git
