@@ -39,7 +39,7 @@ z-index:1;
 const BLOG = styled(NavLink)`
 color: ${props => props.theme.text};
 position: absolute;
-top: 50%;
+top: 40%;
 right: calc(1rem + 2vw);
 transform: rotate(90deg) translate(-47%, -50%);
 text-decoration: none;
@@ -131,7 +131,7 @@ const Main = ({ clickcount, setClickcount }) => {
     const [click, setClick] = useState(false);
 
     const handleClick = () => {
-        setClickcount(clickcount + 1);  // Increment clickcount
+        // setClickcount(clickcount + 1);  // Increment clickcount
         setClick(!click);
     }
 
