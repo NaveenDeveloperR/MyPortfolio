@@ -2,7 +2,7 @@ import React, { useRef, useState,useEffect} from 'react'
 import styled, { keyframes } from 'styled-components'
 import { useLocation } from 'react-router-dom'; // Import useLocation for route changes
 
-import music from "../assets/audio/whip-afro-dancehall-music-110235.mp3"
+import music from "../assets/audio/beast_bgm.mp3"
 
 const Box = styled.div`
 display:flex;
