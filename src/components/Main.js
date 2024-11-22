@@ -131,7 +131,7 @@ const Main = ({ clickcount, setClickcount }) => {
     const [click, setClick] = useState(false);
 
     const handleClick = () => {
-        // setClickcount(clickcount + 1);  // Increment clickcount
+        setClickcount(clickcount + 1);  // Increment clickcount
         setClick(!click);
     }
 
