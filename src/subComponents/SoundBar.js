@@ -2,7 +2,7 @@ import React, { useRef, useState,useEffect} from 'react'
 import styled, { keyframes } from 'styled-components'
 import { useLocation } from 'react-router-dom'; // Import useLocation for route changes
 
-import music from "../assets/audio/beast_bgm.mp3"
+import music from "../assets/audio/What's-Cookin_-(Background-Score).mp3"
 
 const Box = styled.div`
 display:flex;
@@ -94,6 +94,7 @@ const SoundBar = ({ clickcount }) => {
         setClick(!click);
 
         if (!click) {
+            ref.current.currentTime = 10; // Set the audio start time to 10 seconds
             ref.current.play();
         } else {
             ref.current.pause();

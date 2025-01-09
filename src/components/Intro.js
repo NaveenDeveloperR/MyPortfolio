@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { motion } from 'framer-motion'
-import Me from '../assets/Images/profile_img.webp'
+import Me from '../assets/Images/profile_image.png'
 
 
 const Box = styled(motion.div)`
@@ -44,31 +44,43 @@ display: flex;
     bottom: 0;
     left: 50%;
     transform: translate(-50%,0%);
-    width: 100%;
-    height: auto;
+    width: 30vw; /* Adjust the percentage based on desired size */
+    height: 120%;
+    object-fit: contain; /* Ensures the aspect ratio is preserved */
 }
 `
 
 const Text = styled.div`
-font-size: calc(1em + 1.5vw);
-color: ${props => props.theme.body};
-padding: 2rem;
-cursor: pointer;
+  font-size: calc(1em + 1.5vw);
+  color: ${props => props.theme.body};
+  padding: 2rem;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 
-display: flex;
-flex-direction: column;
-justify-content: space-evenly;
+  h3 {
+    color: ${props => props.theme.body}; /* Initial theme color */
+    font-weight: bold;
+    animation: changeToMustard 5s forwards; /* Trigger the mustard yellow color change */
+  }
 
-&>*:last-child{
+  @keyframes changeToMustard {
+    0% {
+      color: ${props => props.theme.body}; /* Start with the theme color */
+    }
+    100% {
+      color: #e6a059; /* Mustard yellow after 3 seconds */
+    }
+  }
+
+  & > *:last-child {
     color: ${props => `rgba(${props.theme.bodyRgba},0.6)`};
     font-size: calc(0.5rem + 1.5vw);
-    font-weight:300;
+    font-weight: 300;
+  }
+`;
 
-}
-
-
-
-`
 
 const Intro = () => {
     return (
