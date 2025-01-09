@@ -94,7 +94,6 @@ const SoundBar = ({ clickcount }) => {
         setClick(!click);
 
         if (!click) {
-            ref.current.currentTime = 10; // Set the audio start time to 10 seconds
             ref.current.play();
         } else {
             ref.current.pause();
