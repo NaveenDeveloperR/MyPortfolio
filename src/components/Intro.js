@@ -70,7 +70,7 @@ const Intro = () => {
   const [mustard, setMustard] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => setMustard(true), 3000); // Set mustard color after 3 seconds
+    const timer = setTimeout(() => setMustard(true), 2500); // Set mustard color after 3 seconds
     return () => clearTimeout(timer); // Cleanup timeout on component unmount
   }, []);
 
