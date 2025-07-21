@@ -1,6 +1,6 @@
 import React, { useRef, useState,useEffect} from 'react'
 import styled, { keyframes } from 'styled-components'
-import { useLocation } from 'react-router-dom'; // Import useLocation for route changes
+// import { useLocation } from 'react-router-dom'; // Import useLocation for route changes
 
 import music from "../assets/audio/ordinaryperson.mp3"
 
@@ -56,13 +56,26 @@ const SoundBar = ({ clickcount }) => {
     const ref = useRef(null);
     const [click, setClick] = useState(false);
     const hasInitialized = useRef(false); // Ref to track if initialization has occurred
-    const currentLocation = useLocation(); // Renamed to avoid conflict with global 'location'
+    // const currentLocation = useLocation(); // Renamed to avoid conflict with global 'location'
 
     useEffect(() => {
         if (clickcount === 1 && !hasInitialized.current) {
-            setClick(true); // Initialize the click state when clickCount is 1
-            ref.current.play();  // Play the audio when click is true
-            hasInitialized.current = true; // Set the flag to true so it doesn't run again
+            setClick(true);
+            if (ref.current) {
+                ref.current.currentTime = 4; // Skip first 4 seconds
+                ref.current.volume = 0; // Start with volume 0
+                ref.current.play();
+                
+                // Fade in over 2 seconds
+                const fadeAudio = setInterval(() => {
+                    if (ref.current.volume < 1) {
+                        ref.current.volume = Math.min(ref.current.volume + 0.1, 1);
+                    } else {
+                        clearInterval(fadeAudio);
+                    }
+                }, 200);
+            }
+            hasInitialized.current = true;
         }
     }, [clickcount]); // Only run when clickCount changes
 
@@ -81,20 +94,30 @@ const SoundBar = ({ clickcount }) => {
             document.removeEventListener("visibilitychange", handleVisibilityChange);
         };
     }, [click]);
-    // Stop music when the user navigates to a different page
-    useEffect(() => {
-        setClick(false); // Reset click state
-        if (ref.current) {
-            ref.current.pause(); // Pause the audio
-            ref.current.currentTime = 0; // Reset audio to the start
-        }
-    }, [currentLocation]); // Run whenever the route changes
+    // // Stop music when the user navigates to a different page
+    // useEffect(() => {
+    //     setClick(false); // Reset click state
+    //     if (ref.current) {
+    //         ref.current.pause(); // Pause the audio
+    //         ref.current.currentTime = 0; // Reset audio to the start
+    //     }
+    // }, [currentLocation]); // Run whenever the route changes
 
     const handleClick = () => {
         setClick(!click);
 
         if (!click) {
+            ref.current.volume = 0; // Start with volume 0
             ref.current.play();
+            
+            // Fade in when manually clicking
+            const fadeAudio = setInterval(() => {
+                if (ref.current.volume < 1) {
+                    ref.current.volume = Math.min(ref.current.volume + 0.1, 1);
+                } else {
+                    clearInterval(fadeAudio);
+                }
+            }, 200);
         } else {
             ref.current.pause();
         }
