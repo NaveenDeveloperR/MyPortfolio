@@ -15,7 +15,7 @@ export const Blogs = [
         tags:["AIPoweredLearning","QuestionGeneration","GoogleGenerativeAI"],
         date:"5 Jan, 2024",
         imgSrc:"https://raw.githubusercontent.com/NaveenDeveloperR/inquisitive-streamlit-app/ea4c169233d55e33658e210b3068b4ac6bca44df/Output_Images/english.png",
-        link:"https://inquisitive-streamlit-app.onrender.com"
+        link:"https://inquisitive.streamlit.app"
     },
     {
         id:3,
