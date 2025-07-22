@@ -57,6 +57,33 @@ const IconWrapper = styled.div`
 const SocialIcons = (props) => {
   return (
     <Icons>
+      {/* Linkedin Link */}
+      <IconWrapper>
+        <motion.div
+          initial={{ scale: 0 }}
+          animate={{ scale: [0, 1, 1.5, 1] }}
+          transition={{ type: "spring", duration: 1, delay: 0.4 }}
+        >
+          <a
+            style={{ color: "inherit" }}
+            target="_blank"
+            href={"https://www.linkedin.com/in/naveen-kumar-42a8b0314/"}
+            rel="noreferrer noopener"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="25"
+              height="25"
+              fill={props.theme === "dark" ? DarkTheme.text : DarkTheme.body}
+              viewBox="0 0 24 24"
+            >
+              <path d="M20.452 20.452h-3.554v-5.569c0-1.327-.027-3.037-1.852-3.037-1.854 0-2.137 1.445-2.137 2.937v5.669H9.355V9h3.413v1.561h.049c.476-.899 1.637-1.848 3.368-1.848 3.599 0 4.266 2.368 4.266 5.455v6.284zM5.337 7.433a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM6.776 20.452H3.896V9h2.88v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.226.792 24 1.771 24h20.451C23.2 24 24 23.226 24 22.271V1.729C24 .774 23.2 0 22.225 0z" />
+            </svg>
+          </a>
+          <Tooltip color={props.theme}>LinkedIn</Tooltip>
+        </motion.div>
+      </IconWrapper>
+
       {/* Leetcode Link */}
       <IconWrapper>
         <motion.div
